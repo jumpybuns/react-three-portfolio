@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import MainVideo from '../assets/Capture.mp4';
-import { motion } from 'framer-motion';
+import img2 from '../assets/2.png';
+
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 const VideoContainer = styled.section`
   width: 100%;
@@ -27,7 +30,7 @@ const DarkOverlay = styled.div`
   background-color: ${(props) => `rgba(${props.theme.bodyRgba}, 0)`};
 `;
 
-const Title = styled(motion.div)`
+const Title = styled.div`
   position: absolute;
   top: 0;
   bottom: 0;
@@ -47,98 +50,108 @@ const Title = styled(motion.div)`
   }
 
   h1 {
+    display: flex;
+    flex-direction: row;
     font-family: 'Open Sans';
-    font-size: ${(props) => props.theme.fontBig};
+    font-size: ${(props) => props.theme.fontxxxl};
     text-shadow: 1px 1px 1px ${(props) => props.theme.body};
+    letter-spacing: 20px;
   }
   h2 {
     font-family: 'Roboto Slab';
-    font-size: ${(props) => props.theme.fontlg};
+    font-size: ${(props) => props.theme.fontxl};
     text-shadow: 1px 1px 1px ${(props) => props.theme.body};
     font-weight: 300;
-    text-transform: capitalize;
+  }
+  h3 {
+    font-family: 'Roboto Slab';
+    font-size: ${(props) => props.theme.fontxxl};
+    text-shadow: 1px 1px 1px ${(props) => props.theme.body};
+    font-weight: 300;
   }
 `;
 
-const containerVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      delayChildren: 2,
-      staggerChildren: 0.3,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-  },
-};
-
 const CoverVideo = () => {
+  gsap.registerPlugin(ScrollTrigger);
+  let imageRef = useRef(null);
+
+  useEffect(() => {
+    const t1 = gsap.timeline();
+
+    t1.to(imageRef, {
+      y: '-150px',
+      scale: 5,
+      duration: 15,
+      rotate: 360,
+    });
+
+    ScrollTrigger.refresh();
+  }, []);
+
+  let tl = gsap.timeline({ duration: 0.5 });
+  useEffect(() => {
+    tl.fromTo(
+      '.hello',
+      { opacity: 0 },
+      {
+        scale: 1.5,
+        opacity: 1,
+        ease: 'power1.inOut',
+        stagger: {
+          from: 'left',
+          amount: 0.25,
+        },
+      }
+    )
+      .to('.hello', { opacity: 0, delay: 2 })
+      .fromTo(
+        '.myname',
+        { opacity: 0 },
+        {
+          duration: 1,
+          opacity: 1,
+          ease: 'power1.inOut',
+          stagger: {
+            from: 'left',
+            amount: 0.5,
+          },
+        },
+        '-=2'
+      )
+      .fromTo('.name', { opacity: 0 }, { opacity: 1 })
+      .to('.myname', { opacity: 0 })
+      .fromTo('.name', { scale: 1, x: 0 }, { scale: 1.2, x: -125 })
+      .fromTo('.Iam', { opacity: 0 }, { opacity: 1, delay: 1 })
+      .fromTo('.dev', { opacity: 0 }, { opacity: 1 })
+      .to('.Iam', { opacity: 0 });
+  }, [tl]);
   return (
     <VideoContainer>
       <DarkOverlay />
-      <Title variants={containerVariants} initial='hidden' animate='show'>
+      <img
+        ref={(el) => (imageRef = el)}
+        className='small-img-1'
+        src={img2}
+        alt='About Us'
+      />
+      <Title>
         <div>
-          <motion.h1
-            variants={itemVariants}
-            data-scroll
-            data-scroll-delay='0.13'
-            data-scroll-speed='4'
-          >
-            E
-          </motion.h1>
-          <motion.h1
-            variants={itemVariants}
-            data-scroll
-            data-scroll-delay='0.09'
-            data-scroll-speed='4'
-          >
-            T
-          </motion.h1>
-          <motion.h1
-            variants={itemVariants}
-            data-scroll
-            data-scroll-delay='0.06'
-            data-scroll-speed='4'
-          >
-            H
-          </motion.h1>
-          <motion.h1
-            variants={itemVariants}
-            data-scroll
-            data-scroll-delay='0.04'
-            data-scroll-speed='4'
-          >
-            A
-          </motion.h1>{' '}
-          <motion.h1
-            variants={itemVariants}
-            data-scroll
-            data-scroll-delay='0.01'
-            data-scroll-speed='4'
-          >
-            N
-          </motion.h1>
+          <h1 className='hello'>H</h1>
+          <h1 className='hello'>E</h1>
+          <h1 className='hello'>L</h1>
+          <h1 className='hello'>L</h1>
+          <h1 className='hello'>O</h1>
         </div>
-        <motion.h2
-          variants={itemVariants}
-          data-scroll
-          data-scroll-delay='0.04'
-          data-scroll-speed='4'
-        >
-          Software Developer.
-        </motion.h2>
+        <div>
+          <h3 className='myname'>My&nbsp;</h3>
+          <h3 className='myname'>name&nbsp;</h3>
+          <h3 className='myname'>is&nbsp;</h3>
+          <h3 className='name'>Ethan Pierce</h3>
+        </div>
+        <h2 className='Iam'>I am a</h2>
+        <h2 className='dev'>Software Developer.</h2>
       </Title>
-      <video src={MainVideo} type='video/mp4' autoPlay muted loop />
+      {/* <video src={MainVideo} type='video/mp4' autoPlay muted loop /> */}
     </VideoContainer>
   );
 };

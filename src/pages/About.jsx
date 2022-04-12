@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-
 import img2 from '../assets/2.png';
 
 const Section = styled.section`
@@ -102,7 +101,7 @@ const About = () => {
     ScrollTrigger.create({
       trigger: '.container',
       onEnter: handleTitle,
-      markers: true,
+
       start: 'top bottom',
     });
   }, [tl]);
@@ -114,9 +113,8 @@ const About = () => {
       scrollTrigger: {
         trigger: imageRef,
         start: 'top bottom-=200',
-        end: 'bottom bottom',
+        end: 'top bottom-=200',
         scrub: 1,
-        markers: true,
       },
       y: '-150px',
       scale: 25,
@@ -133,9 +131,8 @@ const About = () => {
       scrollTrigger: {
         trigger: '.container',
         start: 'top bottom-=50',
-        end: 'bottom bottom',
+        end: 'top bottom-=50',
         scrub: 1,
-        markers: true,
       },
       y: 200,
       ease: 'expo.out',
@@ -151,9 +148,8 @@ const About = () => {
       scrollTrigger: {
         trigger: imageRef,
         start: 'top top+=200',
-        end: 'bottom bottom-=150',
+        end: 'top bottom+=150',
         scrub: 1,
-        markers: true,
       },
       scale: 25,
       duration: 500,
@@ -169,7 +165,6 @@ const About = () => {
         start: 'top bottom-=300',
         end: 'bottom bottom',
         scrub: 1,
-        markers: true,
       },
       scale: 25,
       duration: 10,

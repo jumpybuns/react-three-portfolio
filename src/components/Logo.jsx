@@ -86,7 +86,7 @@ const Logo = () => {
               initial='hidden'
               animate='visible'
               points='20,6 10,40 40,40'
-              class='triangle'
+              className='triangle'
             />
             <motion.polygon
               style={{ transform: 'rotate(45deg)' }}
@@ -94,7 +94,7 @@ const Logo = () => {
               initial='hidden'
               animate='visible'
               points='40,-40 20,0 60,40'
-              class='triangle'
+              className='triangle'
             />
           </g>
         </svg>
