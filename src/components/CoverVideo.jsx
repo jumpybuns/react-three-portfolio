@@ -13,6 +13,7 @@ const VideoContainer = styled.section`
     height: 100vh;
     object-fit: cover;
   }
+  z-index: 1;
 `;
 
 const DarkOverlay = styled.div`
@@ -21,9 +22,9 @@ const DarkOverlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 3;
 
-  background-color: ${(props) => `rgba(${props.theme.bodyRgba}, 0.2)`};
+  background-color: ${(props) => `rgba(${props.theme.bodyRgba}, 0)`};
 `;
 
 const Title = styled(motion.div)`

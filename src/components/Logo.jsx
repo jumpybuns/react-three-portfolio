@@ -25,7 +25,7 @@ const Container = styled.div`
     stroke-linecap: round;
 
     g {
-      path {
+      polygon {
         stroke: ${(props) => props.theme.text};
       }
     }
@@ -41,11 +41,11 @@ const Text = styled(motion.span)`
 const textVariants = {
   hidden: {
     opacity: 0,
-    x: -50,
+    x: -150,
   },
   visible: {
     opacity: 1,
-    x: -5,
+    x: 70,
     transition: {
       duration: 2,
       ease: 'easeInOut',
@@ -81,11 +81,20 @@ const Logo = () => {
           fill='none'
         >
           <g>
-            <motion.path
+            <motion.polygon
               variants={pathVariants}
               initial='hidden'
               animate='visible'
-              d='M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z'
+              points='20,6 10,40 40,40'
+              class='triangle'
+            />
+            <motion.polygon
+              style={{ transform: 'rotate(45deg)' }}
+              variants={pathVariants}
+              initial='hidden'
+              animate='visible'
+              points='40,-40 20,0 60,40'
+              class='triangle'
             />
           </g>
         </svg>

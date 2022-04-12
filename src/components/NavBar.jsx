@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { navOpen } from '../animations/NavBarAnimations';
+import { gsap } from 'gsap';
+import { Link } from 'react-router-dom';
 
 const NavContainer = styled(motion.div)`
   position: absolute;
@@ -60,30 +63,54 @@ const MenuItem = styled(motion.li)`
 `;
 
 const NavBar = () => {
+  const [menuOpen, setMenuOpen] = useState(true);
+  let navRef = useRef(null);
+  let box = useRef(null);
+
+  useEffect(() => {
+    navRef.current = gsap
+      .timeline()
+      .to(box.current, { y: '80px', ease: 'power4.out' });
+
+    return () => {
+      navRef.current.kill();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (menuOpen) {
+      navRef.current.reverse();
+    } else {
+      navRef.current.play();
+    }
+  }, [menuOpen]);
+
   return (
     <NavContainer
-      initial={{ y: '-100%' }}
+      initial={{ y: '-100px' }}
       animate={{ y: '0' }}
       transition={{ duration: 2, delay: 2 }}
+      onClick={() => setMenuOpen(!menuOpen)}
     >
       <MenuItems
         drag='y'
         dragConstraints={{ top: 0, bottom: 60 }}
         dragSnapToOrigin
         dragElastic={0.05}
+        ref={box}
       >
         <MenuBtn>Menu</MenuBtn>
         <MenuItem
           whileHover={{ scale: 1.1, y: -3 }}
           whileTap={{ scale: 0.09, y: 0 }}
         >
-          Home
+          <a href='#home'>Home</a>
         </MenuItem>
         <MenuItem
           whileHover={{ scale: 1.1, y: -3 }}
           whileTap={{ scale: 0.09, y: 0 }}
         >
-          about
+          <a href='#about'>About</a>
         </MenuItem>
         <MenuItem
           whileHover={{ scale: 1.1, y: -3 }}
