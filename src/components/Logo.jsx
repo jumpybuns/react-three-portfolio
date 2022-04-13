@@ -34,7 +34,7 @@ const Container = styled.div`
 
 const Text = styled(motion.span)`
   font-size: ${(props) => props.theme.fontlg};
-  color: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.body};
   padding-bottom: 0.5rem;
 `;
 
@@ -78,22 +78,22 @@ const Logo = () => {
           height='48px'
           viewBox='0 0 24 24'
           width='48px'
-          fill='none'
+          fill='#202020'
         >
           <g>
-            <motion.polygon
-              variants={pathVariants}
-              initial='hidden'
-              animate='visible'
-              points='20,6 10,40 40,40'
-              className='triangle'
-            />
             <motion.polygon
               style={{ transform: 'rotate(45deg)' }}
               variants={pathVariants}
               initial='hidden'
               animate='visible'
               points='40,-40 20,0 60,40'
+              className='triangle'
+            />
+            <motion.polygon
+              variants={pathVariants}
+              initial='hidden'
+              animate='visible'
+              points='20,6 10,40 40,40'
               className='triangle'
             />
           </g>

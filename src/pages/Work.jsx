@@ -56,24 +56,21 @@ const Left = styled.div`
     &:hover {
       color: orange;
     }
-    color: ${(props) => (props.selected ? 'red' : 'none')};
-  }
-  .current {
-    li {
-      color: red;
+    &:active {
+      transform: scale(0.9);
     }
-  }
 
-  p {
-    font-size: ${(props) => props.theme.fontlg};
-    font-weight: 300;
-    width: 80%;
-    margin: 0 auto;
+    p {
+      font-size: ${(props) => props.theme.fontlg};
+      font-weight: 300;
+      width: 80%;
+      margin: 0 auto;
+    }
   }
 `;
 
 const Right = styled.div`
-  background-color: #444444;
+  background-color: #2f2f2f;
   border-radius: 5px;
   width: 65%;
   min-height: 100vh;

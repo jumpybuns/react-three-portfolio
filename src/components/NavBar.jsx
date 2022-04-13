@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { navOpen } from '../animations/NavBarAnimations';
+
 import { gsap } from 'gsap';
-import { Link } from 'react-router-dom';
 
 const NavContainer = styled(motion.div)`
   position: absolute;
@@ -18,13 +17,13 @@ const NavContainer = styled(motion.div)`
 `;
 
 const MenuBtn = styled.li`
-  background-color: beige;
+  background-color: ${(props) => props.theme.body};
   list-style: none;
-  color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   width: 15rem;
   height: 2.5rem;
   clip-path: polygon(0 0, 100% 0, 80% 100%, 20% 100%);
-
+  border: 2px white solid;
   position: absolute;
   top: 100%;
   left: 50%;
@@ -116,13 +115,13 @@ const NavBar = () => {
           whileHover={{ scale: 1.1, y: -3 }}
           whileTap={{ scale: 0.09, y: 0 }}
         >
-          work
+          <a href='#work'>work</a>
         </MenuItem>
         <MenuItem
           whileHover={{ scale: 1.1, y: -3 }}
           whileTap={{ scale: 0.09, y: 0 }}
         >
-          inquire
+          <a href='#contact'>contact</a>
         </MenuItem>
       </MenuItems>
     </NavContainer>

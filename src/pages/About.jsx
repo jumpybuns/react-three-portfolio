@@ -16,7 +16,7 @@ const Title = styled.h1`
   font-size: ${(props) => props.theme.fontBig};
   font-family: 'Open Sans';
   font-weight: 300;
-
+  color: ${(props) => props.theme.body};
   position: absolute;
   top: 1rem;
   left: 5%;
@@ -26,7 +26,7 @@ const Title = styled.h1`
 const Left = styled.div`
   background-color: ${(props) => props.theme.body};
   color: ${(props) => props.theme.text};
-  font-size: 1.5rem;
+  font-size: ${(props) => props.theme.fontlg};
   font-weight: 300;
   position: relative;
   padding: 2rem;
@@ -95,7 +95,7 @@ const About = () => {
   useEffect(() => {
     const handleTitle = () => {
       aboutTitle.forEach((e, i) => {
-        tl.to([e.name], { x: (200 * i) / 2, duration: 1, delay: 0.2 }, 0.1 * i);
+        tl.to([e.name], { x: (200 * i) / 2, duration: 0.8 }, 0.1 * i);
       });
     };
     ScrollTrigger.create({
@@ -112,12 +112,13 @@ const About = () => {
     t1.to(imageRef, {
       scrollTrigger: {
         trigger: imageRef,
-        start: 'top bottom-=200',
-        end: 'top bottom-=200',
+        start: 'top bottom',
+        end: 'top top',
         scrub: 1,
+        markers: true,
       },
       y: '-150px',
-      scale: 25,
+      scale: 15,
       duration: 15,
     });
 
@@ -135,7 +136,7 @@ const About = () => {
         scrub: 1,
       },
       y: 200,
-      ease: 'expo.out',
+      ease: 'expo.in',
       duration: 15,
     });
     ScrollTrigger.refresh();
@@ -151,7 +152,7 @@ const About = () => {
         end: 'top bottom+=150',
         scrub: 1,
       },
-      scale: 25,
+      scale: 9.5,
       duration: 500,
     });
     ScrollTrigger.refresh();
@@ -166,7 +167,7 @@ const About = () => {
         end: 'bottom bottom',
         scrub: 1,
       },
-      scale: 25,
+      scale: 10,
       duration: 10,
     });
     ScrollTrigger.refresh();

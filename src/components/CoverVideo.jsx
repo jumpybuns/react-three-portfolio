@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import MainVideo from '../assets/Capture.mp4';
 import img2 from '../assets/2.png';
 
 import { gsap } from 'gsap';

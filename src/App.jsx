@@ -1,23 +1,27 @@
 import './App.css';
 import GlobalStyles from './styles/GlobalStyles';
-import { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { dark } from './styles/Themes';
 import Home from './pages/Home';
 import About from './pages/About';
 import Work from './pages/Work';
 import Contact from './pages/Contact';
 
+const Main = styled.div`
+  height: 400vh;
+`;
+
 const App = () => {
   return (
     <>
       <GlobalStyles />
       <ThemeProvider theme={dark}>
-        <main className='App'>
+        <Main className='App'>
           <Home />
           <About />
           <Work />
           <Contact />
-        </main>
+        </Main>
       </ThemeProvider>
     </>
   );
