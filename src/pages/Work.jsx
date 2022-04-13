@@ -17,7 +17,7 @@ const Section = styled.section`
   height: auto;
   display: flex;
   margin: 0 auto;
-  color: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.body};
   justify-content: flex-start;
   background-color: ${(props) => props.theme.black};
   align-items: flex-start;
@@ -70,7 +70,7 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-  background-color: #2f2f2f;
+  background-color: #c6c6c6;
   border-radius: 5px;
   width: 65%;
   min-height: 100vh;
@@ -149,28 +149,13 @@ const Shop = () => {
           <Title className='title'>Work</Title>
           <ul>
             <li onClick={() => setSelected(YogaSeva)}>Yoga Seva</li>
-            <li
-              className='project'
-              onClick={() => {
-                setSelected(Colorful);
-              }}
-            >
+            <li className='project' onClick={() => setSelected(Colorful)}>
               Colorful
             </li>
-            <li
-              className='project'
-              onClick={() => {
-                setSelected(ParkingChecker);
-              }}
-            >
+            <li className='project' onClick={() => setSelected(ParkingChecker)}>
               Parking Checker
             </li>
-            <li
-              className='project'
-              onClick={() => {
-                setSelected(AuroraSynth);
-              }}
-            >
+            <li className='project' onClick={() => setSelected(AuroraSynth)}>
               Aurora Synth
             </li>
           </ul>

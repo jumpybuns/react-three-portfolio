@@ -84,8 +84,8 @@ const Contact = () => {
         <Title>Contact</Title>
         <Body>
           <h3>
-            Drop me a line. <br />I would love to chat about projects,
-            philosphy, games, music, art, movies...everything!{' '}
+            Drop me a line! <br />I love to chat about projects, philosphy,
+            games, music, art, movies...everything!
           </h3>
 
           {/* SOCIALS */}
@@ -143,7 +143,7 @@ const Contact = () => {
           </ul>
           <Resume>
             {/* RESUME */}
-            <a href='/resume.pdf' download='Ethan Pierce'>
+            <a href='../assets/resume.pdf' download='Ethan Pierce'>
               Resume
             </a>
           </Resume>

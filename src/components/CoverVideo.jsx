@@ -115,14 +115,18 @@ const CoverVideo = () => {
             amount: 0.5,
           },
         },
-        '-=2'
+        '-=3'
       )
-      .fromTo('.name', { opacity: 0 }, { opacity: 1 })
+      .fromTo('.name', { opacity: 0 }, { opacity: 1 }, '-=2')
       .to('.myname', { opacity: 0 })
       .fromTo('.name', { scale: 1, x: 0 }, { scale: 1.2, x: -125 })
       .fromTo('.Iam', { opacity: 0 }, { opacity: 1, delay: 1 })
-      .fromTo('.dev', { opacity: 0 }, { opacity: 1 })
-      .to('.Iam', { opacity: 0 });
+      .fromTo('.a', { opacity: 0 }, { opacity: 1 }, '-=0.5')
+      .fromTo('.dev', { x: 0, opacity: 0 }, { x: 10, opacity: 1 })
+      .to('.a', { opacity: 0 })
+      .fromTo('.Iam', { y: 0 }, { y: -100 }, '-=0.5')
+      .to('.Iam', { opacity: 0 })
+      .fromTo('.dev', { y: 0 }, { y: -40 }, '-=0.5');
   }, [tl]);
   return (
     <VideoContainer>
@@ -147,10 +151,12 @@ const CoverVideo = () => {
           <h3 className='myname'>is&nbsp;</h3>
           <h3 className='name'>Ethan Pierce</h3>
         </div>
-        <h2 className='Iam'>I am a</h2>
+        <div>
+          <h2 className='Iam'>I am &nbsp;</h2>
+          <h2 className='a'>a</h2>
+        </div>
         <h2 className='dev'>Software Developer.</h2>
       </Title>
-      {/* <video src={MainVideo} type='video/mp4' autoPlay muted loop /> */}
     </VideoContainer>
   );
 };
