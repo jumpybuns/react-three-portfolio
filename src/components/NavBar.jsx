@@ -102,7 +102,9 @@ const NavBar = () => {
       <MenuItems ref={box}>
         <MenuBtn>Menu</MenuBtn>
         <MenuItem>
-          <a href='#home'>Home</a>
+          <a href='/resume.pdf' download='Ethan Pierce'>
+            Resume
+          </a>
         </MenuItem>
         <MenuItem>
           <a href='#about'>About</a>

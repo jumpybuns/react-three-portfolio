@@ -7,9 +7,11 @@ import img2 from '../assets/2.png';
 const Section = styled.section`
   position: relative;
   height: 120vh;
-  width: 80vw;
+  width: 100vw;
   display: flex;
   margin: 0 auto;
+  padding: 0 10% 0 10%;
+  overflow: hidden;
 `;
 
 const Title = styled.h1`
@@ -18,8 +20,8 @@ const Title = styled.h1`
   font-weight: 300;
   color: ${(props) => props.theme.body};
   position: absolute;
-  top: 1rem;
-  left: 5%;
+  top: 65px;
+  left: 13%;
   z-index: 5;
 `;
 
@@ -28,7 +30,11 @@ const Left = styled.div`
   color: ${(props) => props.theme.text};
   font-size: ${(props) => props.theme.fontlg};
   font-weight: 300;
-  position: relative;
+  position: absolute;
+  height: 80vh;
+  width: 600px;
+  top: -45px;
+  left: 9%;
   padding: 2rem;
   text-align: left;
   z-index: 5;
@@ -99,7 +105,7 @@ const About = () => {
       });
     };
     ScrollTrigger.create({
-      trigger: '.container',
+      trigger: '.title-container',
       onEnter: handleTitle,
 
       start: 'top bottom',
@@ -130,7 +136,7 @@ const About = () => {
 
     t1.from(text, {
       scrollTrigger: {
-        trigger: '.container',
+        trigger: '.title-container',
         start: 'top bottom-=50',
         end: 'top bottom-=50',
         scrub: 1,
@@ -149,7 +155,7 @@ const About = () => {
       scrollTrigger: {
         trigger: imageRef,
         start: 'top top+=200',
-        end: 'top bottom+=150',
+        end: 'top top+=200',
         scrub: 1,
       },
       scale: 9.5,
@@ -164,7 +170,7 @@ const About = () => {
       scrollTrigger: {
         trigger: imageRef,
         start: 'top bottom-=300',
-        end: 'bottom bottom',
+        end: 'bottom bottom-=300',
         scrub: 1,
       },
       scale: 10,
@@ -174,8 +180,8 @@ const About = () => {
   }, []);
 
   return (
-    <Section id='about'>
-      <div className='container'>{aboutTitle.map(renderBox)}</div>
+    <Section id='about' className='container'>
+      <div className='title-container'>{aboutTitle.map(renderBox)}</div>
       <Left ref={(el) => (text = el)}>
         As a software developer, I strive to build on your vision to create
         intuitive, smooth, and unique web experiences. Using the latest front

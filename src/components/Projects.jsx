@@ -80,19 +80,6 @@ export const YogaSeva = () => {
       { opacity: 0, y: 1000 },
       { opacity: 1, y: 0, ease: 'power1.out', duration: 2 },
       '-=1'
-    ).fromTo(
-      '.link',
-      { opacity: 0, scale: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 1,
-        ease: 'power1.inOut',
-        stagger: {
-          amount: 0.5,
-        },
-      },
-      '-=1'
     );
   }, [tl]);
 
@@ -147,19 +134,6 @@ export const Colorful = () => {
       { opacity: 0, y: -1000 },
       { opacity: 1, y: 0, ease: 'power1.out', duration: 2 },
       '-=1'
-    ).fromTo(
-      '.link',
-      { opacity: 0, scale: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 0.3,
-        ease: 'power1.inOut',
-        stagger: {
-          amount: 0.5,
-        },
-      },
-      '-=1'
     );
   }, [tl]);
 
@@ -209,19 +183,6 @@ export const ParkingChecker = () => {
       containerRef,
       { opacity: 0, y: 1000 },
       { opacity: 1, y: 0, ease: 'power1.out', duration: 2 },
-      '-=1'
-    ).fromTo(
-      '.link',
-      { opacity: 0, scale: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 0.3,
-        ease: 'power1.inOut',
-        stagger: {
-          amount: 0.5,
-        },
-      },
       '-=1'
     );
   }, [tl]);
@@ -273,19 +234,6 @@ export const AuroraSynth = () => {
       containerRef,
       { opacity: 0, y: -1000 },
       { opacity: 1, y: 0, ease: 'power1.out', duration: 2 },
-      '-=1'
-    ).fromTo(
-      '.link',
-      { opacity: 0, scale: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 0.3,
-        ease: 'power1.inOut',
-        stagger: {
-          amount: 0.5,
-        },
-      },
       '-=1'
     );
   }, [tl]);

@@ -8,7 +8,7 @@ const Section = styled.section`
   position: relative;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #bbbbbb;
+  background-color: #fff7e3;
 `;
 
 const Home = () => {

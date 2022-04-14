@@ -18,17 +18,6 @@ const VideoContainer = styled.section`
   z-index: 1;
 `;
 
-const DarkOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-
-  background-color: ${(props) => `rgba(${props.theme.bodyRgba}, 0)`};
-`;
-
 const Title = styled.div`
   position: absolute;
   top: 0;
@@ -130,7 +119,6 @@ const CoverVideo = () => {
   }, [tl]);
   return (
     <VideoContainer>
-      <DarkOverlay />
       <img
         ref={(el) => (imageRef = el)}
         className='small-img-1'

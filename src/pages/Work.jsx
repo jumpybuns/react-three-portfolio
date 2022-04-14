@@ -106,8 +106,8 @@ const Shop = () => {
       {
         scrollTrigger: {
           trigger: rightRef,
-          start: 'top bottom',
-          end: 'top bottom',
+          start: 'top bottom-=200',
+          end: 'top bottom-=200',
           scrub: 1,
           // markers: true,
         },
@@ -116,7 +116,7 @@ const Shop = () => {
         scaleX: 0,
         opacity: 0,
       },
-      { x: 0, duration: 1, ease: 'back.out(1.3)', scaleX: 1, opacity: 1 }
+      { x: 0, duration: 1.4, ease: 'back.out(1.3)', scaleX: 1, opacity: 1 }
     );
     ScrollTrigger.refresh();
   }, [t4]);
@@ -127,8 +127,8 @@ const Shop = () => {
       {
         scrollTrigger: {
           trigger: '.title',
-          start: 'top bottom',
-          end: 'bottom bottom',
+          start: 'top bottom-=200',
+          end: 'bottom bottom-=200',
           scrub: 1,
           // markers: true,
         },
@@ -137,7 +137,7 @@ const Shop = () => {
         scaleX: 0,
         opacity: 0,
       },
-      { x: 0, duration: 1, ease: 'back.out(1.1)', scaleX: 1, opacity: 1 }
+      { x: 0, duration: 2, ease: 'back.out(1.1)', scaleX: 1, opacity: 1 }
     );
     ScrollTrigger.refresh();
   }, [t4]);
