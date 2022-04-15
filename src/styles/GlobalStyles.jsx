@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
 *,*::before,*::after{
   margin: 0;
   padding: 0;
+
 }
 
 body {
@@ -22,6 +23,10 @@ h1,h2,h3,h4,h5,h6{
 a {
   color: inherit;
   text-decoration: none;
+}
+
+li {
+  list-style: none;
 }
 `;
 

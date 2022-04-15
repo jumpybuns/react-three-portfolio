@@ -121,7 +121,7 @@ const About = () => {
         start: 'top bottom',
         end: 'top top',
         scrub: 1,
-        markers: true,
+        // markers: true,
       },
       y: '-150px',
       scale: 15,

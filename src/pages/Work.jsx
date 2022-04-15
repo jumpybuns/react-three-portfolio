@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import img2 from '../assets/2.png';
+import { useColor } from '../hooks/useColor';
 
 import {
   YogaSeva,
@@ -21,6 +22,7 @@ const Section = styled.section`
   justify-content: flex-start;
   background-color: ${(props) => props.theme.black};
   align-items: flex-start;
+  overflow: hidden;
 `;
 
 const Title = styled.h1`
@@ -53,9 +55,7 @@ const Left = styled.div`
     justify-content: flex-end;
     list-style: none;
     font-size: ${(props) => props.theme.fontlg};
-    &:hover {
-      color: orange;
-    }
+
     &:active {
       transform: scale(0.9);
     }
@@ -92,10 +92,11 @@ const Right = styled.div`
   }
 `;
 
-const Shop = () => {
+const Work = () => {
   gsap.registerEffect(ScrollTrigger);
-
   const [selected, setSelected] = useState(YogaSeva);
+  const { enterColor, leaveColor } = useColor();
+
   let rightRef = useRef(null);
   let leftRef = useRef(null);
 
@@ -130,7 +131,6 @@ const Shop = () => {
           start: 'top bottom-=200',
           end: 'bottom bottom-=200',
           scrub: 1,
-          // markers: true,
         },
 
         x: -500,
@@ -148,14 +148,35 @@ const Shop = () => {
         <Left ref={(el) => (leftRef = el)}>
           <Title className='title'>Work</Title>
           <ul>
-            <li onClick={() => setSelected(YogaSeva)}>Yoga Seva</li>
-            <li className='project' onClick={() => setSelected(Colorful)}>
+            <li
+              onMouseEnter={enterColor}
+              onMouseLeave={leaveColor}
+              onClick={() => setSelected(YogaSeva)}
+            >
+              Yoga Seva
+            </li>
+            <li
+              className='project'
+              onMouseEnter={enterColor}
+              onMouseLeave={leaveColor}
+              onClick={() => setSelected(Colorful)}
+            >
               Colorful
             </li>
-            <li className='project' onClick={() => setSelected(ParkingChecker)}>
+            <li
+              className='project'
+              onMouseEnter={enterColor}
+              onMouseLeave={leaveColor}
+              onClick={() => setSelected(ParkingChecker)}
+            >
               Parking Checker
             </li>
-            <li className='project' onClick={() => setSelected(AuroraSynth)}>
+            <li
+              className='project'
+              onMouseEnter={enterColor}
+              onMouseLeave={leaveColor}
+              onClick={() => setSelected(AuroraSynth)}
+            >
               Aurora Synth
             </li>
           </ul>
@@ -169,4 +190,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Work;
