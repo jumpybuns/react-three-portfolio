@@ -62,7 +62,9 @@ const Bottom = styled.div`
 
   .link {
     &:hover {
-      color: orange;
+      color: ${(props) => props.theme.text};
+      opacity: 0.8;
+      transition: 0.3s ease-out;
     }
     &:active {
       transform: scale(0.9);

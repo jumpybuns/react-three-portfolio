@@ -1,7 +1,5 @@
 import styled from 'styled-components';
-import { gsap } from 'gsap';
 import img from '../assets/2.png';
-import { useRef, useEffect } from 'react';
 
 const Section = styled.section`
   position: relative;
@@ -108,18 +106,6 @@ const Resume = styled.div`
 `;
 
 const Contact = () => {
-  // let imageRef6 = useRef(null);
-
-  // useEffect(() => {
-  //   const t1 = gsap.timeline();
-
-  //   t1.to(imageRef6, {
-  //     scale: 5,
-  //     duration: 15,
-  //     rotate: 130,
-  //   });
-  // }, []);
-
   return (
     <>
       <Section id='contact'>

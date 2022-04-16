@@ -11,12 +11,11 @@ export const useColor = () => {
     '#6518e7',
   ];
   let num = 0;
-
+  const randomNumber = Math.floor(Math.random() * 8);
   const enterColor = (e) => {
-    if (num === 9) {
-      num = 0;
-    }
-    e.target.style.color = colorArr[num];
+    num = (num + randomNumber) % colorArr.length;
+    const colors = colorArr[num];
+    e.target.style.color = colors;
     e.target.style.opacity = 0.8;
   };
   const leaveColor = (e) => {

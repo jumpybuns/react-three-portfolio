@@ -70,7 +70,7 @@ const CoverVideo = () => {
 
     t1.to(imageRef, {
       y: '-150px',
-      scale: 5,
+      scale: 4,
       duration: 15,
       rotate: 245,
     });
