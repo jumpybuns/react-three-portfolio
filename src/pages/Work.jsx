@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import img2 from '../assets/2.png';
+import { useColor } from '../hooks/useColor';
 
 import {
   YogaSeva,
@@ -17,10 +18,11 @@ const Section = styled.section`
   height: auto;
   display: flex;
   margin: 0 auto;
-  color: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.body};
   justify-content: flex-start;
   background-color: ${(props) => props.theme.black};
   align-items: flex-start;
+  overflow: hidden;
 `;
 
 const Title = styled.h1`
@@ -53,9 +55,7 @@ const Left = styled.div`
     justify-content: flex-end;
     list-style: none;
     font-size: ${(props) => props.theme.fontlg};
-    &:hover {
-      color: orange;
-    }
+
     &:active {
       transform: scale(0.9);
     }
@@ -70,7 +70,7 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-  background-color: #2f2f2f;
+  background-color: #c6c6c6;
   border-radius: 5px;
   width: 65%;
   min-height: 100vh;
@@ -92,10 +92,11 @@ const Right = styled.div`
   }
 `;
 
-const Shop = () => {
+const Work = () => {
   gsap.registerEffect(ScrollTrigger);
-
   const [selected, setSelected] = useState(YogaSeva);
+  const { enterColor, leaveColor } = useColor();
+
   let rightRef = useRef(null);
   let leftRef = useRef(null);
 
@@ -106,8 +107,8 @@ const Shop = () => {
       {
         scrollTrigger: {
           trigger: rightRef,
-          start: 'top bottom',
-          end: 'top bottom',
+          start: 'top bottom-=200',
+          end: 'top bottom-=200',
           scrub: 1,
           // markers: true,
         },
@@ -116,7 +117,7 @@ const Shop = () => {
         scaleX: 0,
         opacity: 0,
       },
-      { x: 0, duration: 1, ease: 'back.out(1.3)', scaleX: 1, opacity: 1 }
+      { x: 0, duration: 1.4, ease: 'back.out(1.3)', scaleX: 1, opacity: 1 }
     );
     ScrollTrigger.refresh();
   }, [t4]);
@@ -127,17 +128,16 @@ const Shop = () => {
       {
         scrollTrigger: {
           trigger: '.title',
-          start: 'top bottom',
-          end: 'bottom bottom',
+          start: 'top bottom-=200',
+          end: 'bottom bottom-=200',
           scrub: 1,
-          // markers: true,
         },
 
         x: -500,
         scaleX: 0,
         opacity: 0,
       },
-      { x: 0, duration: 1, ease: 'back.out(1.1)', scaleX: 1, opacity: 1 }
+      { x: 0, duration: 2, ease: 'back.out(1.1)', scaleX: 1, opacity: 1 }
     );
     ScrollTrigger.refresh();
   }, [t4]);
@@ -148,28 +148,34 @@ const Shop = () => {
         <Left ref={(el) => (leftRef = el)}>
           <Title className='title'>Work</Title>
           <ul>
-            <li onClick={() => setSelected(YogaSeva)}>Yoga Seva</li>
+            <li
+              onMouseEnter={enterColor}
+              onMouseLeave={leaveColor}
+              onClick={() => setSelected(YogaSeva)}
+            >
+              Yoga Seva
+            </li>
             <li
               className='project'
-              onClick={() => {
-                setSelected(Colorful);
-              }}
+              onMouseEnter={enterColor}
+              onMouseLeave={leaveColor}
+              onClick={() => setSelected(Colorful)}
             >
               Colorful
             </li>
             <li
               className='project'
-              onClick={() => {
-                setSelected(ParkingChecker);
-              }}
+              onMouseEnter={enterColor}
+              onMouseLeave={leaveColor}
+              onClick={() => setSelected(ParkingChecker)}
             >
               Parking Checker
             </li>
             <li
               className='project'
-              onClick={() => {
-                setSelected(AuroraSynth);
-              }}
+              onMouseEnter={enterColor}
+              onMouseLeave={leaveColor}
+              onClick={() => setSelected(AuroraSynth)}
             >
               Aurora Synth
             </li>
@@ -184,4 +190,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Work;

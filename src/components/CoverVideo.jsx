@@ -9,24 +9,14 @@ const VideoContainer = styled.section`
   width: 100%;
   height: 100vh;
   position: relative;
-
+  -webkit-text-stroke: 1px black;
+  background: ${(props) => props.theme.text};
   video {
     width: 100%;
     height: 100vh;
     object-fit: cover;
   }
   z-index: 1;
-`;
-
-const DarkOverlay = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-
-  background-color: ${(props) => `rgba(${props.theme.bodyRgba}, 0)`};
 `;
 
 const Title = styled.div`
@@ -42,6 +32,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   color: ${(props) => props.theme.text};
+  text-shadow: 1px 1px ${(props) => props.theme.body};
 
   div {
     display: flex;
@@ -79,9 +70,9 @@ const CoverVideo = () => {
 
     t1.to(imageRef, {
       y: '-150px',
-      scale: 5,
+      scale: 4,
       duration: 15,
-      rotate: 360,
+      rotate: 245,
     });
 
     ScrollTrigger.refresh();
@@ -115,18 +106,29 @@ const CoverVideo = () => {
             amount: 0.5,
           },
         },
-        '-=2'
+        '-=3'
       )
-      .fromTo('.name', { opacity: 0 }, { opacity: 1 })
+      .fromTo('.first-name', { opacity: 0 }, { opacity: 1 }, '-=2')
+      .fromTo('.last-name', { opacity: 0 }, { opacity: 1 }, '-=2')
       .to('.myname', { opacity: 0 })
-      .fromTo('.name', { scale: 1, x: 0 }, { scale: 1.2, x: -125 })
+      .fromTo('.first-name', { scale: 1, x: 0 }, { scale: 1.2, x: -145 })
+      .fromTo(
+        '.last-name',
+        { scale: 1, x: 0 },
+        { scale: 1.2, x: -125 },
+        '-=0.35'
+      )
       .fromTo('.Iam', { opacity: 0 }, { opacity: 1, delay: 1 })
-      .fromTo('.dev', { opacity: 0 }, { opacity: 1 })
-      .to('.Iam', { opacity: 0 });
+      .fromTo('.a', { opacity: 0 }, { opacity: 1 }, '-=0.5')
+      .fromTo('.dev', { x: 0, opacity: 0 }, { x: 10, opacity: 1 })
+      .to('.a', { opacity: 0 })
+      .fromTo('.Iam', { y: 0, x: 0 }, { y: -100, x: 15 }, '-=0.5')
+      .to('.Iam', { y: -100, x: 15 })
+      .to('.Iam', { opacity: 0 })
+      .fromTo('.dev', { y: 0 }, { y: -40 });
   }, [tl]);
   return (
     <VideoContainer>
-      <DarkOverlay />
       <img
         ref={(el) => (imageRef = el)}
         className='small-img-1'
@@ -145,12 +147,15 @@ const CoverVideo = () => {
           <h3 className='myname'>My&nbsp;</h3>
           <h3 className='myname'>name&nbsp;</h3>
           <h3 className='myname'>is&nbsp;</h3>
-          <h3 className='name'>Ethan Pierce</h3>
+          <h3 className='first-name'>Ethan&nbsp;</h3>
+          <h3 className='last-name'>Pierce</h3>
         </div>
-        <h2 className='Iam'>I am a</h2>
+        <div>
+          <h2 className='Iam'>I am &nbsp;</h2>
+          <h2 className='a'>a</h2>
+        </div>
         <h2 className='dev'>Software Developer.</h2>
       </Title>
-      {/* <video src={MainVideo} type='video/mp4' autoPlay muted loop /> */}
     </VideoContainer>
   );
 };

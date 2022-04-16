@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 
 import { gsap } from 'gsap';
 
-const NavContainer = styled(motion.div)`
+const NavContainer = styled.div`
   position: absolute;
   top: ${(props) => (props.click ? '0' : `-${props.theme.navHeight}`)};
   width: 100vw;
@@ -40,7 +39,7 @@ const MenuBtn = styled.li`
   cursor: pointer;
 `;
 
-const MenuItems = styled(motion.ul)`
+const MenuItems = styled.ul`
   position: relative;
   height: ${(props) => props.theme.navHeight};
   background-color: ${(props) => props.theme.body};
@@ -55,10 +54,19 @@ const MenuItems = styled(motion.ul)`
   padding: 0 10rem;
 `;
 
-const MenuItem = styled(motion.li)`
+const MenuItem = styled.li`
   text-transform: uppercase;
   color: ${(props) => props.theme.text};
   cursor: pointer;
+
+  a {
+    &:hover {
+      color: orange;
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+  }
 `;
 
 const NavBar = () => {
@@ -69,7 +77,7 @@ const NavBar = () => {
   useEffect(() => {
     navRef.current = gsap
       .timeline()
-      .to(box.current, { y: '80px', ease: 'power4.out' });
+      .to(box.current, { y: '80px', ease: 'power4.in' });
 
     return () => {
       navRef.current.kill();
@@ -91,36 +99,20 @@ const NavBar = () => {
       transition={{ duration: 2, delay: 2 }}
       onClick={() => setMenuOpen(!menuOpen)}
     >
-      <MenuItems
-        drag='y'
-        dragConstraints={{ top: 0, bottom: 60 }}
-        dragSnapToOrigin
-        dragElastic={0.05}
-        ref={box}
-      >
+      <MenuItems ref={box}>
         <MenuBtn>Menu</MenuBtn>
-        <MenuItem
-          whileHover={{ scale: 1.1, y: -3 }}
-          whileTap={{ scale: 0.09, y: 0 }}
-        >
-          <a href='#home'>Home</a>
+        <MenuItem>
+          <a href='resume.pdf' download='Ethan Pierce'>
+            Resume
+          </a>
         </MenuItem>
-        <MenuItem
-          whileHover={{ scale: 1.1, y: -3 }}
-          whileTap={{ scale: 0.09, y: 0 }}
-        >
+        <MenuItem>
           <a href='#about'>About</a>
         </MenuItem>
-        <MenuItem
-          whileHover={{ scale: 1.1, y: -3 }}
-          whileTap={{ scale: 0.09, y: 0 }}
-        >
+        <MenuItem>
           <a href='#work'>work</a>
         </MenuItem>
-        <MenuItem
-          whileHover={{ scale: 1.1, y: -3 }}
-          whileTap={{ scale: 0.09, y: 0 }}
-        >
+        <MenuItem>
           <a href='#contact'>contact</a>
         </MenuItem>
       </MenuItems>
